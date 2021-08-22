@@ -32,7 +32,22 @@
             <img alt="Кнопка добавления новых постов" class="profile__add-image" src="./images/profile__add-button.svg">
         </button>
     </section>
-
 </main>
+
+<section class="popup">
+    <form action="#" class="popup__form" novalidate>
+        <img src="./images/popup__close-icon.svg" alt="Кнопка закрытия попапа" class="popup__close-image">
+        <div class="popup__content">
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <input id="user-name-input" type="text" class="popup__input popup__text" name="name"
+                   placeholder="Имя" required minlength="2" maxlength="40">
+            <span id="user-name-input-error" class="popup__input-error"></span>
+            <input id="user-description-input" type="text" class="popup__input popup__text"
+                   name="about" placeholder="Описание" required minlength="2" maxlength="200">
+            <span id="user-description-input-error" class="popup__input-error"></span>
+            <button type="submit" class="popup__save-button">Сохранить</button>
+        </div>
+    </form>
+</section>
 </body>
 </html>
