@@ -3,11 +3,11 @@
     min-height: 24px;
     align-self: end;
     cursor: pointer;
+    margin: 0 0 12px 17px;
     background-color: #000;
     border: 1px solid #fff;
     transition: opacity .2s ease;
     opacity: 1;
-    margin: 27px 18px 0 17px;
 }
 
 .profile__edit-button:hover {
@@ -30,7 +30,8 @@
     .profile__edit-button {
         max-width: 18px;
         min-height: 18px;
-        margin: 0 0 7px 5px;
         padding: 0;
+        margin: 0 0 7px 10px;
+
     }
 }
