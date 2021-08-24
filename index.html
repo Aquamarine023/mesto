@@ -83,17 +83,19 @@
 
 
 <section class="popup">
-    <form action="#" class="popup__form" novalidate>
+    <form action="#" name='edit_profile' class="popup__form" novalidate>
         <img src="./images/popup__close-icon.svg" alt="Кнопка закрытия попапа" class="popup__close-image">
         <div class="popup__content">
             <h3 class="popup__title">Редактировать профиль</h3>
-            <input id="user-name-input" type="text" class="popup__input popup__text" name="name"
+            <input id="user-name-input" type="text" class="popup__input popup__text" name="popup-title"
                    placeholder="Имя">
             <input id="user-description-input" type="text" class="popup__input popup__text"
-                   name="about" placeholder="Описание">
+                   name="popup-subtitle" placeholder="Описание">
             <button type="submit" class="popup__save-button">Сохранить</button>
         </div>
     </form>
 </section>
+
+<script src="./index.js"></script>
 </body>
 </html>
