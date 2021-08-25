@@ -1,10 +1,10 @@
 .cards {
     display: grid;
-    margin: 0 auto;
     max-width: 880px;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px 17px;
     padding-bottom: 66px;
+    margin: 10px auto 0;
 }
 
 @media screen and (max-width: 1024px) {
@@ -20,7 +20,7 @@
     .cards {
         grid-template-columns: 1fr;
         max-width: 282px;
-        gap: 18px;
+        gap: 20px;
         padding-bottom: 49px;
     }
 }

@@ -4,11 +4,11 @@
     min-height: 50px;
     align-self: center;
     cursor: pointer;
-    margin: 0 0 0 auto;
     background-color: #000;
     border: 1px solid #fff;
     transition: opacity .2s ease;
     opacity: 1;
+    margin: 0 0 4px auto;
 }
 
 .profile__add-button:hover {
@@ -30,7 +30,7 @@
 @media screen and (max-width: 639px) {
     .profile__add-button {
         max-width: 300px;
-        margin: 36px auto;
+        margin: 29px auto 36px;
     }
 }
 
