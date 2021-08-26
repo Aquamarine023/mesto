@@ -1,6 +1,5 @@
 .profile__add-button {
-    max-width: 150px;
-    width: 100%;
+    width: 150px;
     min-height: 50px;
     align-self: center;
     cursor: pointer;
@@ -17,25 +16,20 @@
 
 @media screen and (max-width: 1023px) {
     .profile__add-button {
-        max-width: 100px;
+        width: 100px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 770px) {
     .profile__add-button {
-        max-width: 50px;
+        width: 300px;
+        margin: 29px auto 28px;
     }
 }
 
-@media screen and (max-width: 639px) {
-    .profile__add-button {
-        max-width: 300px;
-        margin: 29px auto 36px;
-    }
-}
-
-@media screen and (max-width: 374px) {
+@media screen and (max-width: 500px) {
     .profile__add-button {
         max-width: 282px;
+
     }
 }

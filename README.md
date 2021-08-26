@@ -14,3 +14,6 @@
 * JavaScript ES6
 * Методология БЭМ (в структуре и разметке проекта)
 
+## Ссылка на GitPages:
+https://aquamarine023.github.io/mesto/
+
