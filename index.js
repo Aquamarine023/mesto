@@ -1,21 +1,24 @@
-const popup = document.querySelector('.popup');
+//кнопки
 const editBtn = document.querySelector('.profile__edit-button');
+const addBtn = document.querySelector('.profile__add-button');
 const closeBtn = document.querySelector('.popup__close-image');
+
+//попап
+const popup = document.querySelector('.popup');
 const form = document.querySelector('.popup__form');
 const titlePopup = document.edit_profile['popup-title'];
 const subtitlePopup = document.edit_profile['popup-subtitle'];
 const profileTitleContent = document.querySelector('.profile__title');
 const profileSubtitleContent = document.querySelector('.profile__subtitle');
-const cardElement = document.querySelector('.card')
-const cardTemplate = document.querySelector('.card_template').content
-const cardsContainer = document.querySelector('.cards')
 
+//фукция редактирования попапа с информацией профиля
 function openPopup() {
     titlePopup.value = profileTitleContent.textContent;
     subtitlePopup.value = profileSubtitleContent.textContent;
     popup.classList.add('popup_active');
 }
 
+//фукция закрытия попапа с информацией профиля
 function closePopup() {
     popup.classList.remove('popup_active');
 }
@@ -27,6 +30,7 @@ function submitPopup(evt) {
     closePopup();
 }
 
+//массив
 const initialCards = [
     {
         name: 'Архыз',
@@ -53,6 +57,12 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+//карточки
+const cardTemplate = document.querySelector('.card_template').content
+const cardsContainer = document.querySelector('.cards')
+
+//изначально добавленные карточки
 initialCards.forEach(function (element) {
     const cardElement = cardTemplate.cloneNode(true);
 
