@@ -1,6 +1,6 @@
 const popup = document.querySelector('.popup');
 const editBtn = document.querySelector('.profile__edit-button');
-const closeBtn = document.querySelector('.popup__close-image');
+const closeBtn = document.querySelector('.popup__close-button');
 const form = document.querySelector('.popup__form');
 const titlePopup = document.edit_profile['popup-title'];
 const subtitlePopup = document.edit_profile['popup-subtitle'];

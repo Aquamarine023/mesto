@@ -4,10 +4,11 @@
     align-self: center;
     cursor: pointer;
     background-color: #000;
-    border: 1px solid #fff;
+    border: 2px solid #FFFFFF;
+    border-radius: 2px;
     transition: opacity .2s ease;
     opacity: 1;
-    margin: 0 0 4px auto;
+    margin: 0 0 6px auto;
 }
 
 .profile__add-button:hover {
