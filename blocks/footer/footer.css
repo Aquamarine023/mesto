@@ -4,15 +4,22 @@
 }
 
 
-@media screen and (max-width: 1024px){
-    .footer{
+@media screen and (max-width: 1024px) {
+    .footer {
         max-width: 700px;
     }
 }
 
-@media screen and (max-width: 768px){
-    .footer{
+@media screen and (max-width: 768px) {
+    .footer {
         max-width: 320px;
         margin-bottom: 36px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer {
+        max-width: 282px;
+
     }
 }

@@ -1,15 +1,13 @@
 //кнопки
 const editBtn = document.querySelector('.profile__edit-button');
 const addBtn = document.querySelector('.profile__add-button');
-const closeBtn = document.querySelectorAll('.popup__close-image');
+const closeBtn = document.querySelector('.popup__close-button');
 
 //попап
-const popup = document.querySelectorAll('.popup');
+const popup = document.querySelector('.popup');
 const form = document.querySelector('.popup__form');
-const titlePopup = document.edit_profile['popup-title'];
-const subtitlePopup = document.edit_profile['popup-subtitle'];
-const namePopup = document.edit_profile['profile-name']
-const jobPopup = document.edit_profile['profile-job']
+const titlePopup = document.edit_profile['popup-name'];
+const subtitlePopup = document.edit_profile['popup-job'];
 const profileTitleContent = document.querySelector('.profile__title');
 const profileSubtitleContent = document.querySelector('.profile__subtitle');
 

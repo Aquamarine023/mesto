@@ -49,20 +49,37 @@
 </footer>
 
 
-<section class="popup">
-    <form action="#" name='edit_profile' class="popup__form" novalidate>
-        <img src="./images/popup__close-icon.svg" alt="Кнопка закрытия попапа" class="popup__close-image">
-        <div class="popup__content">
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <input id="user-name-input" type="text" class="popup__input popup__text" name="popup-title"
-                   placeholder="Имя">
-            <input id="user-description-input" type="text" class="popup__input popup__text"
-                   name="popup-subtitle" placeholder="Описание">
-            <button type="submit" class="popup__save-button">Сохранить</button>
-        </div>
-    </form>
-</section>
+<div class="popup">
+    <div class="popup__form-container">
+        <form action="#" class="popup__form" name='edit_profile' novalidate>
+            <button type="button" class="popup__close-button"></button>
+            <div class="popup__content">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input class="popup__input" id="user-name-input" name="popup-name" placeholder="Имя" type="text">
+                <input class="popup__input" id="user-description-input" name="popup-job"
+                       placeholder="Описание" type="text">
+                <button class="popup__save-button" type="submit">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
 
-<script src="./index.js"></script>
+
+<div class="popup">
+    <div class="popup__form-container">
+        <form action="#" class="popup__form" name='edit_profile' novalidate>
+            <button type="button" class="popup__close-button"></button>
+            <div class="popup__content">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <input class="popup__input" id="card-name-input" name="card-name" placeholder="Название" type="text">
+                <input class="popup__input" id="card-link-input" name="card-link"
+                       placeholder="Ссылка на картинку" type="text">
+                <button class="popup__save-button" type="submit">Создать</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="./scripts/index.js"></script>
 </body>
 </html>

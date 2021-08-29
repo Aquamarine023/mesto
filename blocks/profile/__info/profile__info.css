@@ -4,16 +4,16 @@
     color: #fff;
 }
 
-@media screen and (max-width: 639px) {
+@media screen and (max-width: 770px) {
     .profile__info {
-        margin-top: 14px;
+        margin-top: 10px;
     }
 }
 
-@media screen and (max-width: 374px) {
+@media screen and (max-width: 500px) {
     .profile__info {
         grid-template-columns: repeat(2, minmax(min-content, 295px));
         align-self: flex-start;
-        margin-left: 40px;
+        margin-left: 30px;
     }
 }

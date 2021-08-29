@@ -9,15 +9,16 @@
     box-sizing: border-box;
 }
 
-@media screen and (max-width:540px){
-    .popup__form{
+@media screen and (max-width: 540px) {
+    .popup__form {
         max-width: 320px;
     }
 }
 
-@media screen and (max-width:320px){
-    .popup__form{
-        max-width: 288px;
+@media screen and (max-width: 320px) {
+    .popup__form {
+        max-width: 282px;
         padding: 25px 22px 25px;
+
     }
 }
