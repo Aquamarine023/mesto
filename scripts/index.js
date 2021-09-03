@@ -1,36 +1,28 @@
 //кнопки
-const editBtn = document.querySelector('.profile__edit-button');
-const addBtn = document.querySelector('.profile__add-button');
-const closeBtn = document.querySelector('.popup__close-button');
+const addBtn = document.querySelector('.profile__add-button')
+const editBtn = document.querySelector('.profile__edit-button')
+const closeBtn = document.querySelectorAll('.popup__close-button')
 
-//попап
-const popup = document.querySelector('.popup');
-const form = document.querySelector('.popup__form');
-const titlePopup = document.edit_profile['popup-name'];
-const subtitlePopup = document.edit_profile['popup-job'];
-const profileTitleContent = document.querySelector('.profile__title');
-const profileSubtitleContent = document.querySelector('.profile__subtitle');
+//формы
+const editForm = document.querySelector('.popup_edit-form')
+const addForm = document.querySelector('.popup_add-form')
+const openFullScreenForm = document.querySelector('.popup_fullscreen')
 
-//фукция редактирования попапа с информацией профиля
-function openPopup() {
-    titlePopup.value = profileTitleContent.textContent;
-    subtitlePopup.value = profileSubtitleContent.textContent;
-    popup.classList.add('popup_active');
-}
+//инпуты форм
+const namePopup = document.edit_profile['popup-name']
+const jobPopup = document.edit_profile['popup-job']
+const handleAddMestoName = document.add_mesto['add-mesto_title']
+const handleAddMestoLink = document.add_mesto['add-mesto_link']
 
-//фукция закрытия попапа с информацией профиля
-function closePopup() {
-    popup.classList.remove('popup_active');
-}
+//профиль пользоватея
+const profileNameContent = document.querySelector('.profile__title')
+const profileJobContent = document.querySelector('.profile__subtitle')
 
-function submitPopup(evt) {
-    evt.preventDefault();
-    profileTitleContent.textContent = titlePopup.value;
-    profileSubtitleContent.textContent = subtitlePopup.value;
-    closePopup();
-}
+//темплейт
+const elementTemplate = document.querySelector('.card_template').content.querySelector('.card')
+const cardsContainer = document.querySelector('.cards')
 
-//массив
+//массивы
 const initialCards = [
     {
         name: 'Архыз',
@@ -58,20 +50,104 @@ const initialCards = [
     }
 ];
 
-//карточки
-const cardTemplate = document.querySelector('.card_template').content
-const cardsContainer = document.querySelector('.cards')
+//функция открытия формы редактирования профиля
+const openPopupProfile = () => {
+    namePopup.value = profileNameContent.textContent
+    jobPopup.value = profileJobContent.textContent
+    editForm.classList.add('popup_active');
+}
 
-//изначально добавленные карточки
-initialCards.forEach(function (element) {
-    const cardElement = cardTemplate.cloneNode(true);
+//функция закрытия формы редактирования профиля
+const closePopupProfile = () => {
+    editForm.classList.remove('popup_active')
+}
 
-    cardElement.querySelector('.card__title').textContent = element.name;
-    cardElement.querySelector('.card__image').src = element.link;
+//функция открытия формы добавления места
+const openPopupMesto = () => {
+    addForm.classList.add('popup_active')
+}
 
-    cardsContainer.append(cardElement)
+//функция закрытия формы добавления места
+const closePopupMesto = () => {
+    addForm.classList.remove('popup_active')
+}
+
+//функция открытия карточки на полный экран
+const fullScreenImage = (evt) => {
+    openFullScreenForm.classList.add('popup_active')
+    document.querySelector('.popup__image').src = evt.target.closest('.card__image').src
+    document.querySelector('.popup__description').textContent = evt.target.closest('.card').textContent
+    document.querySelector('.popup__image').alt = evt.target.closest('.card').textContent.trim()
+}
+
+//функция закрытия карточки на полный экран
+const closePopupFullScreen = () => {
+    openFullScreenForm.classList.remove('popup_active')
+}
+
+//функция закрытия формы добавления места
+function submitPopupMesto(evt) {
+    evt.preventDefault()
+    createCards({
+        name: handleAddMestoName.value,
+        link: handleAddMestoLink.value
+    })
+
+    document.add_mesto.reset()
+    closePopupMesto()
+}
+
+//функция подтверждения изменений в редактировнии профиля
+const submitPopupProfile = (evt) => {
+    evt.preventDefault();
+    profileNameContent.textContent = namePopup.value
+    profileJobContent.textContent = jobPopup.value
+    closePopupProfile();
+}
+
+//функция удаления карточек
+const deleteCard = (evt) => {
+    evt.target.closest('.card').remove();
+};
+
+//функция лайков
+const addLike = (evt) => {
+    evt.target.classList.toggle('card__like_active')
+}
+
+
+
+//возврат разметки карточки
+const addCard = (element) => {
+    const cardElement = elementTemplate.cloneNode(true)
+
+    cardElement.querySelector('.card__title').textContent = element.name
+    cardElement.querySelector('.card__image').src = element.link
+    cardElement.querySelector('.card__image').alt = element.name
+    cardElement.querySelector('.card__delete').addEventListener('click', deleteCard)
+    cardElement.querySelector('.card__like').addEventListener('click', addLike)
+    cardElement.querySelector('.card__image').addEventListener('click', fullScreenImage)
+    return cardElement
+}
+
+//добавление карточек в контейнер
+const createCards = (element) => {
+    cardsContainer.prepend(addCard(element))
+}
+
+//создание карточек
+initialCards.forEach((element) => {
+    createCards(element)
 })
 
-form.addEventListener('submit', submitPopup);
-editBtn.addEventListener('click', openPopup);
-closeBtn.addEventListener('click', closePopup);
+//ивенты
+editForm.addEventListener('submit', submitPopupProfile)
+addForm.addEventListener('submit', submitPopupMesto)
+editBtn.addEventListener('click', openPopupProfile)
+addBtn.addEventListener('click', openPopupMesto)
+closeBtn.forEach((element) => {
+    element.addEventListener('click', () =>{
+        document.querySelectorAll('.popup').forEach((element) => {
+            element.classList.remove('popup_active')})
+    })
+})
