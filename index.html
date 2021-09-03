@@ -21,13 +21,13 @@
         </div>
         <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button">
-                <img alt="Кнопка изменения профиля" class="profile__edit-image" src="./images/profile__edit-button.svg">
+            <button class="profile__edit-button" type="button" data-form-name="edit_profile_div">
+                <img alt="Кнопка изменения профиля" class="profile__edit-image" src="./images/profile__edit-button.svg" data-form-name="edit_profile_div">
             </button>
             <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button" type="button">
-            <img alt="Кнопка добавления новых постов" class="profile__add-image" src="./images/profile__add-button.svg">
+        <button class="profile__add-button" type="button" data-form-name="add_mesto_div">
+            <img alt="Кнопка добавления новых постов" class="profile__add-image" src="./images/profile__add-button.svg" data-form-name="add_mesto_div">
         </button>
     </section>
 
@@ -50,8 +50,8 @@
 </footer>
 
 
-<div class="popup popup_edit-form">
-    <div class="popup__container">
+<div class="popup popup_edit-form" name="edit_profile_div">
+    <div class="popup__container popup__container_size_limiter">
         <form action="#" class="popup__form" name='edit_profile' novalidate>
             <button type="button" class="popup__close-button"></button>
             <div class="popup__content">
@@ -66,8 +66,8 @@
 </div>
 
 
-<div class="popup popup_add-form">
-    <div class="popup__container">
+<div class="popup popup_add-form" name="add_mesto_div">
+    <div class="popup__container popup__container_size_limiter">
         <form action="#" class="popup__form" name='add_mesto' novalidate>
             <button type="button" class="popup__close-button"></button>
             <div class="popup__content">
