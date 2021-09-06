@@ -11,8 +11,8 @@ const openFullScreenForm = document.querySelector('.popup_fullscreen')
 //инпуты
 const namePopup = document.edit_profile['popup-name']
 const jobPopup = document.edit_profile['popup-job']
-const AddMestoName = document.add_mesto['add-mesto_title']
-const AddMestoLink = document.add_mesto['add-mesto_link']
+const addMestoName = document.add_mesto['add-mesto_title']
+const addMestoLink = document.add_mesto['add-mesto_link']
 
 //профиль
 const profileNameContent = document.querySelector('.profile__title')
@@ -55,13 +55,13 @@ const openPopup = (evt) => {
     namePopup.value = profileNameContent.textContent
     jobPopup.value = profileJobContent.textContent
     const elName = evt.target.getAttribute("data-form-name");
-    const div = document.getElementsByName(elName)[0];
+    const div = document.getElementById(elName);
     div.classList.add('popup_active');
 }
 
 //функция закрытия формы
-const closePopup = (form) => {
-    form.classList.remove('popup_active')
+const closePopup = (popup) => {
+    popup.classList.remove('popup_active')
 }
 
 //функция открытия карточки на полный экран
@@ -76,10 +76,10 @@ const fullScreenImage = (evt) => {
 function submitPopupMesto(evt) {
     evt.preventDefault()
     createCards({
-        name: AddMestoName.value,
-        link: AddMestoLink.value
+        name: addMestoName.value,
+        link: addMestoLink.value
     })
-    document.add_mesto.reset()
+    addForm.reset()
     closePopup(addForm)
 }
 
@@ -130,8 +130,7 @@ addForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openPopup)
 addBtn.addEventListener('click', openPopup)
 closeBtn.forEach((element) => {
-    element.addEventListener('click', () =>{
-        document.querySelectorAll('.popup').forEach((element) => {
-            element.classList.remove('popup_active')})
-    })
+        element.addEventListener('click', (evt) => {
+            closePopup(evt.target.closest('.popup'));
+        });
 })
