@@ -7,15 +7,3 @@
     padding: 34px 36px 36.51px;
     box-sizing: border-box;
 }
-
-.popup__container_size_limiter {
-    max-width: 430px;
-    min-height: 330px;
-}
-
-@media screen and (max-width: 767px) {
-    .popup__container_size_limiter {
-        max-width: 282px;
-        min-height: 322px;
-    }
-}

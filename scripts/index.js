@@ -8,13 +8,13 @@ const editForm = document.querySelector('.popup_edit-form')
 const addForm = document.querySelector('.popup_add-form')
 const openFullScreenForm = document.querySelector('.popup_fullscreen')
 
-//инпуты форм
+//инпуты
 const namePopup = document.edit_profile['popup-name']
 const jobPopup = document.edit_profile['popup-job']
-const handleAddMestoName = document.add_mesto['add-mesto_title']
-const handleAddMestoLink = document.add_mesto['add-mesto_link']
+const AddMestoName = document.add_mesto['add-mesto_title']
+const AddMestoLink = document.add_mesto['add-mesto_link']
 
-//профиль пользоватея
+//профиль
 const profileNameContent = document.querySelector('.profile__title')
 const profileJobContent = document.querySelector('.profile__subtitle')
 
@@ -50,8 +50,8 @@ const initialCards = [
     }
 ];
 
-//функция открытия формы редактирования профиля
-const openPopupProfile = (evt) => {
+//функция открытия формы
+const openPopup = (evt) => {
     namePopup.value = profileNameContent.textContent
     jobPopup.value = profileJobContent.textContent
     const elName = evt.target.getAttribute("data-form-name");
@@ -59,8 +59,8 @@ const openPopupProfile = (evt) => {
     div.classList.add('popup_active');
 }
 
-//функция закрытия формы редактирования профиля
-const closePopupProfile = (form) => {
+//функция закрытия формы
+const closePopup = (form) => {
     form.classList.remove('popup_active')
 }
 
@@ -72,21 +72,15 @@ const fullScreenImage = (evt) => {
     document.querySelector('.popup__image').alt = evt.target.closest('.card').textContent.trim()
 }
 
-//функция закрытия карточки на полный экран
-const closePopupFullScreen = () => {
-    openFullScreenForm.classList.remove('popup_active')
-}
-
 //функция закрытия формы добавления места
 function submitPopupMesto(evt) {
     evt.preventDefault()
     createCards({
-        name: handleAddMestoName.value,
-        link: handleAddMestoLink.value
+        name: AddMestoName.value,
+        link: AddMestoLink.value
     })
-
     document.add_mesto.reset()
-    closePopupMesto()
+    closePopup(addForm)
 }
 
 //функция подтверждения изменений в редактировнии профиля
@@ -94,7 +88,7 @@ const submitPopupProfile = (evt) => {
     evt.preventDefault();
     profileNameContent.textContent = namePopup.value
     profileJobContent.textContent = jobPopup.value
-    closePopupProfile(editForm);
+    closePopup(editForm);
 }
 
 //функция удаления карточек
@@ -106,8 +100,6 @@ const deleteCard = (evt) => {
 const addLike = (evt) => {
     evt.target.classList.toggle('card__like_active')
 }
-
-
 
 //возврат разметки карточки
 const addCard = (element) => {
@@ -135,8 +127,8 @@ initialCards.forEach((element) => {
 //ивенты
 editForm.addEventListener('submit', submitPopupProfile)
 addForm.addEventListener('submit', submitPopupMesto)
-editBtn.addEventListener('click', openPopupProfile)
-addBtn.addEventListener('click', openPopupProfile)
+editBtn.addEventListener('click', openPopup)
+addBtn.addEventListener('click', openPopup)
 closeBtn.forEach((element) => {
     element.addEventListener('click', () =>{
         document.querySelectorAll('.popup').forEach((element) => {
