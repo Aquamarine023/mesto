@@ -5,7 +5,8 @@ const closeBtn = document.querySelectorAll('.popup__close-button')
 
 //формы
 const editForm = document.querySelector('.popup_edit-form')
-const addForm = document.querySelector('.popup_add-form')
+const addDiv = document.querySelector('.popup_add-form')
+const addForm = document.getElementById('add_mesto')
 const openFullScreenForm = document.querySelector('.popup_fullscreen')
 
 //инпуты
@@ -50,23 +51,24 @@ const initialCards = [
     }
 ];
 
-//функция открытия формы
-const openPopup = (evt) => {
-    namePopup.value = profileNameContent.textContent
-    jobPopup.value = profileJobContent.textContent
-    const elName = evt.target.getAttribute("data-form-name");
-    const div = document.getElementById(elName);
-    div.classList.add('popup_active');
+function openPopup(popup) {
+    popup.classList.add('popup_active');
 }
 
-//функция закрытия формы
+function openProfilePopup() {
+    openPopup(editForm);
+    namePopup.value = profileNameContent.textContent
+    jobPopup.value = profileJobContent.textContent
+}
+
+//функция закрытия попапа
 const closePopup = (popup) => {
     popup.classList.remove('popup_active')
 }
 
 //функция открытия карточки на полный экран
 const fullScreenImage = (evt) => {
-    openFullScreenForm.classList.add('popup_active')
+    openPopup(openFullScreenForm)
     document.querySelector('.popup__image').src = evt.target.closest('.card__image').src
     document.querySelector('.popup__description').textContent = evt.target.closest('.card').textContent
     document.querySelector('.popup__image').alt = evt.target.closest('.card').textContent.trim()
@@ -79,8 +81,9 @@ function submitPopupMesto(evt) {
         name: addMestoName.value,
         link: addMestoLink.value
     })
+    //document.add_mesto.reset()
     addForm.reset()
-    closePopup(addForm)
+    closePopup(addDiv)
 }
 
 //функция подтверждения изменений в редактировнии профиля
@@ -126,9 +129,10 @@ initialCards.forEach((element) => {
 
 //ивенты
 editForm.addEventListener('submit', submitPopupProfile)
-addForm.addEventListener('submit', submitPopupMesto)
-editBtn.addEventListener('click', openPopup)
-addBtn.addEventListener('click', openPopup)
+addDiv.addEventListener('submit', submitPopupMesto)
+editBtn.addEventListener('click', openProfilePopup)
+addBtn.addEventListener('click', () => {
+    openPopup(addDiv)})
 closeBtn.forEach((element) => {
         element.addEventListener('click', (evt) => {
             closePopup(evt.target.closest('.popup'));
