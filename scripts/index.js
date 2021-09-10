@@ -4,9 +4,10 @@ const editBtn = document.querySelector('.profile__edit-button')
 const closeBtn = document.querySelectorAll('.popup__close-button')
 
 //формы
+const popup = document.querySelector('.popup')
 const editForm = document.querySelector('.popup_edit-form')
-const addDiv = document.querySelector('.popup_add-form')
-const addForm = document.getElementById('add_mesto')
+const cardForm = document.querySelector('.popup_add-form')
+const popupAddCard = document.getElementById('add_mesto')
 const openFullScreenForm = document.querySelector('.popup_fullscreen')
 
 //инпуты
@@ -62,8 +63,8 @@ function openProfilePopup() {
 }
 
 //функция закрытия попапа
-const closePopup = (popup) => {
-    popup.classList.remove('popup_active')
+const closePopup = (popop) => {
+    popop.classList.remove('popup_active')
 }
 
 //функция открытия карточки на полный экран
@@ -77,13 +78,12 @@ const fullScreenImage = (evt) => {
 //функция закрытия формы добавления места
 function submitPopupMesto(evt) {
     evt.preventDefault()
-    createCards({
+    createCard({
         name: addMestoName.value,
         link: addMestoLink.value
     })
-    //document.add_mesto.reset()
-    addForm.reset()
-    closePopup(addDiv)
+    popupAddCard.reset()
+    closePopup(cardForm)
 }
 
 //функция подтверждения изменений в редактировнии профиля
@@ -118,21 +118,22 @@ const addCard = (element) => {
 }
 
 //добавление карточек в контейнер
-const createCards = (element) => {
+const createCard = (element) => {
     cardsContainer.prepend(addCard(element))
 }
 
 //создание карточек
 initialCards.forEach((element) => {
-    createCards(element)
+    createCard(element)
 })
 
 //ивенты
 editForm.addEventListener('submit', submitPopupProfile)
-addDiv.addEventListener('submit', submitPopupMesto)
+cardForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openProfilePopup)
+popup.addEventListener('click', closePopup)
 addBtn.addEventListener('click', () => {
-    openPopup(addDiv)})
+    openPopup(cardForm)})
 closeBtn.forEach((element) => {
         element.addEventListener('click', (evt) => {
             closePopup(evt.target.closest('.popup'));
