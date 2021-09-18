@@ -77,6 +77,7 @@ const fullScreenImage = (evt) => {
 
 //функция закрытия формы добавления места
 function submitPopupMesto(evt) {
+    const saveButton = document.add_mesto['save']
     evt.preventDefault()
     createCard({
         name: addMestoName.value,
@@ -84,7 +85,10 @@ function submitPopupMesto(evt) {
     })
     popupAddCard.reset()
     closePopup(cardForm)
-    setSubmitButtonState(false);
+    saveButton.setAttribute('disabled', true);
+    saveButton.classList.add('popup__save-button_inactive');
+
+
 }
 
 //функция подтверждения изменений в редактировнии профиля
