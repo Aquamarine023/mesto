@@ -147,9 +147,9 @@ document.addEventListener('keydown', (evt) => {
 })
 
 //ивенты
-editForm.addEventListener('click', handleCloseOverlay)
-cardForm.addEventListener('click', handleCloseOverlay)
-openFullScreenForm.addEventListener('click', handleCloseOverlay)
+editForm.addEventListener('mousedown', handleCloseOverlay)
+cardForm.addEventListener('mousedown', handleCloseOverlay)
+openFullScreenForm.addEventListener('mousedown', handleCloseOverlay)
 editForm.addEventListener('submit', submitPopupProfile)
 cardForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openProfilePopup)
