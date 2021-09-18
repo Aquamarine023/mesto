@@ -84,6 +84,7 @@ function submitPopupMesto(evt) {
     })
     popupAddCard.reset()
     closePopup(cardForm)
+    setSubmitButtonState(false);
 }
 
 //функция подтверждения изменений в редактировнии профиля
@@ -127,11 +128,27 @@ initialCards.forEach((element) => {
     createCard(element)
 })
 
+const handleCloseOverlay = (evt) => {
+    if (evt.target.classList.contains('popup')) {
+        closePopup(evt.target)
+    }
+}
+
+document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+        closePopup(editForm)
+        closePopup(cardForm)
+        closePopup(openFullScreenForm)
+    }
+})
+
 //ивенты
+editForm.addEventListener('click', handleCloseOverlay)
+cardForm.addEventListener('click', handleCloseOverlay)
+openFullScreenForm.addEventListener('click', handleCloseOverlay)
 editForm.addEventListener('submit', submitPopupProfile)
 cardForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openProfilePopup)
-popup.addEventListener('click', closePopup)
 addBtn.addEventListener('click', () => {
     openPopup(cardForm)})
 closeBtn.forEach((element) => {
