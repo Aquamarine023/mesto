@@ -1,7 +1,8 @@
 //кнопки
 const addBtn = document.querySelector('.profile__add-button')
 const editBtn = document.querySelector('.profile__edit-button')
-const closeBtn = document.querySelectorAll('.popup__close-button')
+const closeBtns = document.querySelectorAll('.popup__close-button')
+const saveButton = document.add_mesto['save']
 
 //формы
 const popup = document.querySelector('.popup')
@@ -23,6 +24,9 @@ const profileJobContent = document.querySelector('.profile__subtitle')
 //темплейт
 const elementTemplate = document.querySelector('.card_template').content.querySelector('.card')
 const cardsContainer = document.querySelector('.cards')
+
+const popupImage = document.querySelector('.popup__image')
+const popupDescription = document.querySelector('.popup__description')
 
 //массивы
 const initialCards = [
@@ -52,8 +56,26 @@ const initialCards = [
     }
 ];
 
+const validationFormConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-button',
+    inactiveButtonClass: 'popup__save-button_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+}
+
+const closePopupEsc = (evt) => {
+    if (evt.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_active')
+        closePopup(popupOpened)
+
+    }
+}
+
 function openPopup(popup) {
     popup.classList.add('popup_active');
+    document.addEventListener('keydown', closePopupEsc)
 }
 
 function openProfilePopup() {
@@ -65,19 +87,19 @@ function openProfilePopup() {
 //функция закрытия попапа
 const closePopup = (popop) => {
     popop.classList.remove('popup_active')
+    document.removeEventListener('keydown', closePopupEsc)
 }
 
 //функция открытия карточки на полный экран
 const fullScreenImage = (evt) => {
     openPopup(openFullScreenForm)
-    document.querySelector('.popup__image').src = evt.target.closest('.card__image').src
-    document.querySelector('.popup__description').textContent = evt.target.closest('.card').textContent
-    document.querySelector('.popup__image').alt = evt.target.closest('.card').textContent.trim()
+    popupImage.src = evt.target.closest('.card__image').src
+    popupDescription.textContent = evt.target.closest('.card').textContent
+    popupImage.alt = evt.target.closest('.card').textContent.trim()
 }
 
 //функция закрытия формы добавления места
 function submitPopupMesto(evt) {
-    const saveButton = document.add_mesto['save']
     evt.preventDefault()
     createCard({
         name: addMestoName.value,
@@ -138,14 +160,6 @@ const handleCloseOverlay = (evt) => {
     }
 }
 
-document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-        closePopup(editForm)
-        closePopup(cardForm)
-        closePopup(openFullScreenForm)
-    }
-})
-
 //ивенты
 editForm.addEventListener('mousedown', handleCloseOverlay)
 cardForm.addEventListener('mousedown', handleCloseOverlay)
@@ -155,7 +169,7 @@ cardForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openProfilePopup)
 addBtn.addEventListener('click', () => {
     openPopup(cardForm)})
-closeBtn.forEach((element) => {
+closeBtns.forEach((element) => {
         element.addEventListener('click', (evt) => {
             closePopup(evt.target.closest('.popup'));
         });
