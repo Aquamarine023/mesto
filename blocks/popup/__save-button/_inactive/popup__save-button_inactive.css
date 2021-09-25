@@ -6,6 +6,7 @@
     border-radius: 2px;
     opacity: 0.2;
     transition: none;
+    cursor: not-allowed;
 }
 
 .popup__save-button_inactive:hover {
