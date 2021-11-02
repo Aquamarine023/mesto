@@ -1,3 +1,5 @@
+import Card from "./Card.js"
+import FormValidator from "./FormValidator.js";
 //кнопки
 const addBtn = document.querySelector('.profile__add-button')
 const editBtn = document.querySelector('.profile__edit-button')
@@ -10,6 +12,8 @@ const editForm = document.querySelector('.popup_edit-form')
 const cardForm = document.querySelector('.popup_add-form')
 const popupAddCard = document.getElementById('add_mesto')
 const openFullScreenForm = document.querySelector('.popup_fullscreen')
+const editProfileForm = document.forms["edit_profile"]
+const addMestoForm = document.forms["add_mesto"]
 
 //инпуты
 const namePopup = document.edit_profile['popup-name']
@@ -65,6 +69,10 @@ const validationFormConfig = {
     errorClass: 'popup__input-error_active'
 }
 
+const formValidatorEditForm = new FormValidator(validationFormConfig, editProfileForm)
+const formValidatorAddForm = new FormValidator(validationFormConfig, addMestoForm)
+
+
 const closePopupEsc = (evt) => {
     if (evt.key === 'Escape') {
         const popupOpened = document.querySelector('.popup_active')
@@ -91,25 +99,11 @@ const closePopup = (popop) => {
 }
 
 //функция открытия карточки на полный экран
-const fullScreenImage = (evt) => {
+function fullScreenImage(name, link) {
+    popupImage.src = link
+    popupImage.alt = name
+    popupDescription.textContent = name
     openPopup(openFullScreenForm)
-    popupImage.src = evt.target.closest('.card__image').src
-    popupDescription.textContent = evt.target.closest('.card').textContent
-    popupImage.alt = evt.target.closest('.card').textContent.trim()
-}
-
-//функция закрытия формы добавления места
-function submitPopupMesto(evt) {
-    evt.preventDefault()
-    createCard({
-        name: addMestoName.value,
-        link: addMestoLink.value
-    })
-    popupAddCard.reset()
-    closePopup(cardForm)
-    saveButton.setAttribute('disabled', true);
-    saveButton.classList.add('popup__save-button_inactive');
-
 
 }
 
@@ -121,37 +115,29 @@ const submitPopupProfile = (evt) => {
     closePopup(editForm);
 }
 
-//функция удаления карточек
-const deleteCard = (evt) => {
-    evt.target.closest('.card').remove();
-};
-
-//функция лайков
-const addLike = (evt) => {
-    evt.target.classList.toggle('card__like_active')
-}
-
-//возврат разметки карточки
-const addCard = (element) => {
-    const cardElement = elementTemplate.cloneNode(true)
-
-    cardElement.querySelector('.card__title').textContent = element.name
-    cardElement.querySelector('.card__image').src = element.link
-    cardElement.querySelector('.card__image').alt = element.name
-    cardElement.querySelector('.card__delete').addEventListener('click', deleteCard)
-    cardElement.querySelector('.card__like').addEventListener('click', addLike)
-    cardElement.querySelector('.card__image').addEventListener('click', fullScreenImage)
-    return cardElement
-}
-
 //добавление карточек в контейнер
-const createCard = (element) => {
-    cardsContainer.prepend(addCard(element))
+function createCard(element) {
+    const card = new Card(element, fullScreenImage, '.card_template')
+    return card.createCard()
+}
+
+const submitPopupMesto = (evt) => {
+    evt.preventDefault()
+    const newData = {
+        name: addMestoName.value,
+        link: addMestoLink.value
+    }
+
+    cardsContainer.prepend(createCard(newData))
+    popupAddCard.reset()
+    closePopup(cardForm)
+    saveButton.setAttribute('disabled', true);
+    saveButton.classList.add('popup__save-button_inactive');
 }
 
 //создание карточек
-initialCards.forEach((element) => {
-    createCard(element)
+initialCards.forEach((item) => {
+    cardsContainer.prepend(createCard(item))
 })
 
 const handleCloseOverlay = (evt) => {
@@ -159,6 +145,9 @@ const handleCloseOverlay = (evt) => {
         closePopup(evt.target)
     }
 }
+
+formValidatorAddForm.enableValidation()
+formValidatorEditForm.enableValidation()
 
 //ивенты
 editForm.addEventListener('mousedown', handleCloseOverlay)
@@ -168,9 +157,10 @@ editForm.addEventListener('submit', submitPopupProfile)
 cardForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openProfilePopup)
 addBtn.addEventListener('click', () => {
-    openPopup(cardForm)})
+    openPopup(cardForm)
+})
 closeBtns.forEach((element) => {
-        element.addEventListener('click', (evt) => {
-            closePopup(evt.target.closest('.popup'));
-        });
+    element.addEventListener('click', (evt) => {
+        closePopup(evt.target.closest('.popup'));
+    });
 })
