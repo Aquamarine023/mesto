@@ -17,7 +17,7 @@ export default class Card {
     _setEventListeners() {
         this._item.querySelector('.card__delete').addEventListener('click', this._deleteCard)
         this._item.querySelector('.card__like').addEventListener('click', this._toggleLikeState)
-        this._item.querySelector('.card__image').addEventListener('click', () => this._handleClickImage(this._name, this._link))
+        this._image.addEventListener('click', () => this._handleClickImage(this._name, this._link))
     }
 
     _getTemplateElement() {
@@ -26,11 +26,11 @@ export default class Card {
 
     createCard() {
         this._item = this._getTemplateElement()
-        const image = this._item.querySelector('.card__image')
+        this._image = this._item.querySelector('.card__image')
         this._setEventListeners()
 
-        image.src = this._link
-        image.alt = this._name
+        this._image.src = this._link
+        this._image.alt = this._name
         this._item.querySelector('.card__title').textContent = this._name
 
         return this._item

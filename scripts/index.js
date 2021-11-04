@@ -143,12 +143,6 @@ initialCards.forEach((item) => {
     cardsContainer.prepend(createCard(item))
 })
 
-const handleCloseOverlay = (evt) => {
-    if (evt.target.classList.contains('popup')) {
-        closePopup(evt.target)
-    }
-}
-
 popups.forEach((element) => {
     element.addEventListener('mousedown', (evt) => {
         if (evt.target.classList.contains('popup_active')) {
