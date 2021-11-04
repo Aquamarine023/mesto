@@ -7,7 +7,7 @@ const closeBtns = document.querySelectorAll('.popup__close-button')
 const saveButton = document.add_mesto['save']
 
 //формы
-const popup = document.querySelector('.popup')
+const popups = Array.from(document.querySelectorAll('.popup'))
 const editForm = document.querySelector('.popup_edit-form')
 const cardForm = document.querySelector('.popup_add-form')
 const popupAddCard = document.getElementById('add_mesto')
@@ -26,7 +26,6 @@ const profileNameContent = document.querySelector('.profile__title')
 const profileJobContent = document.querySelector('.profile__subtitle')
 
 //темплейт
-const elementTemplate = document.querySelector('.card_template').content.querySelector('.card')
 const cardsContainer = document.querySelector('.cards')
 
 const popupImage = document.querySelector('.popup__image')
@@ -81,9 +80,12 @@ const closePopupEsc = (evt) => {
     }
 }
 
+
 function openPopup(popup) {
     popup.classList.add('popup_active');
     document.addEventListener('keydown', closePopupEsc)
+    formValidatorAddForm.disableSubmitButton()
+
 }
 
 function openProfilePopup() {
@@ -96,6 +98,7 @@ function openProfilePopup() {
 const closePopup = (popop) => {
     popop.classList.remove('popup_active')
     document.removeEventListener('keydown', closePopupEsc)
+
 }
 
 //функция открытия карточки на полный экран
@@ -131,7 +134,7 @@ const submitPopupMesto = (evt) => {
     cardsContainer.prepend(createCard(newData))
     popupAddCard.reset()
     closePopup(cardForm)
-    saveButton.setAttribute('disabled', true);
+    formValidatorAddForm.disableSubmitButton()
     saveButton.classList.add('popup__save-button_inactive');
 }
 
@@ -146,21 +149,25 @@ const handleCloseOverlay = (evt) => {
     }
 }
 
+popups.forEach((element) => {
+    element.addEventListener('mousedown', (evt) => {
+        if (evt.target.classList.contains('popup_active')) {
+            closePopup(element)
+        }
+        if (evt.target.classList.contains('popup__close-button')) {
+            closePopup(element)
+        }
+    })
+})
+
 formValidatorAddForm.enableValidation()
 formValidatorEditForm.enableValidation()
 
 //ивенты
-editForm.addEventListener('mousedown', handleCloseOverlay)
-cardForm.addEventListener('mousedown', handleCloseOverlay)
-openFullScreenForm.addEventListener('mousedown', handleCloseOverlay)
 editForm.addEventListener('submit', submitPopupProfile)
 cardForm.addEventListener('submit', submitPopupMesto)
 editBtn.addEventListener('click', openProfilePopup)
 addBtn.addEventListener('click', () => {
     openPopup(cardForm)
 })
-closeBtns.forEach((element) => {
-    element.addEventListener('click', (evt) => {
-        closePopup(evt.target.closest('.popup'));
-    });
-})
+
