@@ -28,8 +28,9 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 
 
-const formValidatorEditForm = new FormValidator(validationFormConfig, editProfileForm)
-const formValidatorAddForm = new FormValidator(validationFormConfig, addMestoForm)
+//создание валидации для конкретной формы
+const formValidatorEditForm = new FormValidator(validationFormConfig, profileFormSelector)
+const formValidatorAddForm = new FormValidator(validationFormConfig, newMestoFormSelector)
 
 //создание экземпляра профиля
 const addInfoProfileForm = new UserInfo({
@@ -105,14 +106,10 @@ const openModalEditPopup = () => {
 }
 
 
+//ивенты
+editBtn.addEventListener('click', openModalEditPopup)
+addBtn.addEventListener('click', openModalAddPopup)
+
+//вызов валидации форм
 formValidatorAddForm.enableValidation()
 formValidatorEditForm.enableValidation()
-
-//ивенты
-editForm.addEventListener('submit', submitPopupProfile)
-cardForm.addEventListener('submit', submitPopupMesto)
-editBtn.addEventListener('click', openProfilePopup)
-addBtn.addEventListener('click', () => {
-    openPopup(cardForm)
-})
-

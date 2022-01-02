@@ -3,37 +3,41 @@ export default class Card {
         this._name = data.name
         this._link = data.link
         this._handleClickImage = handleClickImage
-        this._templateSelector = templateSelector
+        this._teplateSelector = templateSelector
     }
 
+    //метод переключающий кнопку лайк
     _toggleLikeState(evt) {
         evt.target.classList.toggle('card__like_active')
     }
 
-    _deleteCard(evt) {
+    //метод удаления карточки
+    _removeCard(evt) {
         evt.target.closest('.card').remove();
-    };
+    }
 
+    //установка слушателей на карточку
     _setEventListeners() {
-        this._item.querySelector('.card__delete').addEventListener('click', this._deleteCard)
+        this._item.querySelector('.card__delete').addEventListener('click', this._removeCard)
         this._item.querySelector('.card__like').addEventListener('click', this._toggleLikeState)
-        this._image.addEventListener('click', () => this._handleClickImage(this._name, this._link))
+        this._item.querySelector('.card__image').addEventListener('click', () => this._handleClickImage(this._name, this._link))
     }
 
+    //получение темплейта и клонирование
     _getTemplateElement() {
-        return document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true)
+        return document.querySelector(this._teplateSelector).content.querySelector('.card').cloneNode(true)
     }
 
+    //создание карточки
     createCard() {
         this._item = this._getTemplateElement()
-        this._image = this._item.querySelector('.card__image')
+        const image = this._item.querySelector('.card__image')
         this._setEventListeners()
 
-        this._image.src = this._link
-        this._image.alt = this._name
+        image.src = this._link
+        image.alt = this._name
         this._item.querySelector('.card__title').textContent = this._name
 
         return this._item
     }
-
 }

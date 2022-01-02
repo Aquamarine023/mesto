@@ -1,36 +1,29 @@
-//кнопки
-const addBtn = document.querySelector('.profile__add-button')
-const editBtn = document.querySelector('.profile__edit-button')
-const closeBtns = document.querySelectorAll('.popup__close-button')
-const saveButton = document.add_mesto['save']
+export const addBtn = document.querySelector('.profile__add-button')
+export const editBtn = document.querySelector('.profile__edit-button')
 
-//формы
-const popups = Array.from(document.querySelectorAll('.popup'))
-const editForm = document.querySelector('.popup_edit-form')
-const cardForm = document.querySelector('.popup_add-form')
-const popupAddCard = document.getElementById('add_mesto')
-const openFullScreenForm = document.querySelector('.popup_fullscreen')
-const editProfileForm = document.forms["edit_profile"]
-const addMestoForm = document.forms["add_mesto"]
+//формы и элементы
+export const modalEditForm = document.querySelector('.popup_edit-form')
+export const modalAddForm = document.querySelector('.popup_add-form')
+export const modalFullScreenForm = document.querySelector('.popup_fullscreen')
+export const profileFormSelector = document.forms["edit_profile"]
+export const newMestoFormSelector = document.forms["add_mesto"]
+export const imagePopupFullScreen = document.querySelector('.popup__image')
+export const textPopupFullScreen = document.querySelector('.popup__description')
+export const templateSelector = '.card__template'
 
-//инпуты
-const namePopup = document.edit_profile['popup-name']
-const jobPopup = document.edit_profile['popup-job']
-const addMestoName = document.add_mesto['add-mesto_title']
-const addMestoLink = document.add_mesto['add-mesto_link']
+//инпуты форм
+export const namePopup = document.edit_profile['popup-name']
+export const jobPopup = document.edit_profile['popup-job']
 
-//профиль
-const profileNameContent = document.querySelector('.profile__title')
-const profileJobContent = document.querySelector('.profile__subtitle')
+//профиль пользователя
+export const profileNameSelector = '.profile__title'
+export const profileJobSelector = '.profile__subtitle'
 
-//темплейт
-const cardsContainer = document.querySelector('.cards')
-
-const popupImage = document.querySelector('.popup__image')
-const popupDescription = document.querySelector('.popup__description')
+//контейнер карточек
+export const cardsContainer = document.querySelector('.cards')
 
 //массивы
-const initialCards = [
+export const initialCards = [
     {
         name: 'Архыз',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -57,7 +50,7 @@ const initialCards = [
     }
 ];
 
-const validationFormConfig = {
+export const validationFormConfig = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__save-button',

@@ -6,6 +6,7 @@ export default class FormValidator {
         this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector)
     }
 
+    //метод показа текста ошибки
     _showErrorText = (inputElement) => {
         this._errorMessage = this._formElement.querySelector(`#${inputElement.id}-error`)
         inputElement.classList.add(this._config.inputErrorClass)
@@ -79,10 +80,16 @@ export default class FormValidator {
         })
     }
 
+    resetValidation() {
+        this._toggleButtonSubmitState();
+
+        this._inputList.forEach((input) => {
+            this._hideErrorText(input)
+        })
+    }
+
     //включение валидации
     enableValidation() {
         this._addEventListeners()
     }
-
 }
- 

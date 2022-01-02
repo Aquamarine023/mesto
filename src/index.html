@@ -15,17 +15,17 @@
 <main class="content">
     <section class="profile">
         <div class="profile__container">
-            <img alt="Картинка профиля" class="profile__avatar" src="images/profile__image.jfif">
+            <img alt="Картинка профиля" class="profile__avatar" src="<%=require('./images/profile__image.jfif')%>">
         </div>
         <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button" data-form-name="edit_profile_div">
-                <img alt="Кнопка изменения профиля" class="profile__edit-image" src="images/profile__edit-button.svg" data-form-name="edit_profile_div">
+                <img alt="Кнопка изменения профиля" class="profile__edit-image" src="<%=require('./images/profile__edit-button.svg')%>" data-form-name="edit_profile_div">
             </button>
             <p class="profile__subtitle">Исследователь океана</p>
         </div>
         <button class="profile__add-button" type="button" data-form-name="add_mesto_div">
-            <img alt="Кнопка добавления новых постов" class="profile__add-image" src="images/profile__add-button.svg" data-form-name="add_mesto_div">
+            <img alt="Кнопка добавления новых постов" class="profile__add-image" src="<%=require('./images/profile__add-button.svg')%>" data-form-name="add_mesto_div">
         </button>
     </section>
 
