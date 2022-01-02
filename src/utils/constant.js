@@ -9,11 +9,11 @@ export const profileFormSelector = document.forms["edit_profile"]
 export const newMestoFormSelector = document.forms["add_mesto"]
 export const imagePopupFullScreen = document.querySelector('.popup__image')
 export const textPopupFullScreen = document.querySelector('.popup__description')
-export const templateSelector = '.card__template'
+export const templateSelector = '.card_template'
 
 //инпуты форм
-export const namePopup = document.edit_profile['popup-name']
-export const jobPopup = document.edit_profile['popup-job']
+export const namePopup = document.edit_profile['profile_name']
+export const jobPopup = document.edit_profile['profile_job']
 
 //профиль пользователя
 export const profileNameSelector = '.profile__title'

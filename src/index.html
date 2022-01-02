@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Mesto</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta content="Яндекс.Практикум" name="keywords">
     <meta content="Маша Брель" name="author">
 </head>
@@ -48,17 +49,17 @@
 </footer>
 
 
-<div class="popup popup_edit-form" id="edit_profile_div">
+<div class="popup popup_edit-form">
     <div class="popup__container popup__container_size_limiter">
         <form action="#" class="popup__form" name='edit_profile' novalidate>
             <button type="button" class="popup__close-button"></button>
             <div class="popup__content">
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <input class="popup__input" id="user-name-input" name="popup-name" placeholder="Имя" type="text" minlength="2" maxlength="30" required>
-                <span id="user-name-input-error" class="popup__input-error"></span>
-                <input class="popup__input" id="user-description-input" name="popup-job"
+                <input class="popup__input" id="profile_name" name="profile_name" placeholder="Имя" type="text" minlength="2" maxlength="30" required>
+                <span id="profile_name-error" class="popup__input-error"></span>
+                <input class="popup__input" id="profile_job" name="profile_job"
                        placeholder="Описание" type="text" minlength="2" maxlength="200" required>
-                <span id="user-description-input-error" class="popup__input-error"></span>
+                <span id="profile_job-error" class="popup__input-error"></span>
                 <button class="popup__save-button" type="submit">Сохранить</button>
             </div>
         </form>
@@ -66,9 +67,9 @@
 </div>
 
 
-<div class="popup popup_add-form" id="add_mesto_div">
+<div class="popup popup_add-form">
     <div class="popup__container popup__container_size_limiter">
-        <form action="#" class="popup__form" name='add_mesto' id="add_mesto" novalidate>
+        <form action="#" class="popup__form" name='add_mesto' novalidate>
             <button type="button" class="popup__close-button"></button>
             <div class="popup__content">
                 <h3 class="popup__title">Новое место</h3>

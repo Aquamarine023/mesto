@@ -3,7 +3,7 @@ export default class Card {
         this._name = data.name
         this._link = data.link
         this._handleClickImage = handleClickImage
-        this._teplateSelector = templateSelector
+        this._templateSelector = templateSelector
     }
 
     //метод переключающий кнопку лайк
@@ -25,7 +25,7 @@ export default class Card {
 
     //получение темплейта и клонирование
     _getTemplateElement() {
-        return document.querySelector(this._teplateSelector).content.querySelector('.card').cloneNode(true)
+        return document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true)
     }
 
     //создание карточки

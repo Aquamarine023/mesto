@@ -14,7 +14,7 @@ export default class UserInfo {
 
     //установка новых данных в профиль
     setUserInfo(data) {
-        this._userName.textContent = data.popup-name
-        this._userInfo.textContent = data.popup-job
+        this._userName.textContent = data.profile_name
+        this._userInfo.textContent = data.profile_job
     }
 }

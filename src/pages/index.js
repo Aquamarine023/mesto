@@ -105,7 +105,6 @@ const openModalEditPopup = () => {
     openModalEditForm.open()
 }
 
-
 //ивенты
 editBtn.addEventListener('click', openModalEditPopup)
 addBtn.addEventListener('click', openModalAddPopup)
