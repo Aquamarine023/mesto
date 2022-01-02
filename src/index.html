@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Mesto</title>
-    <link href="./images/picture-site-title.jfif" rel="shortcut icon">
-    <link href="./pages/index.css" rel="stylesheet">
+    <link href="images/picture-site-title.jfif" rel="shortcut icon">
+    <link href="pages/index.css" rel="stylesheet">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Яндекс.Практикум" name="keywords">
     <meta content="Маша Брель" name="author">
 </head>
 <body class="page">
 <header class="header">
-    <img alt="логотип" class="header__logo" src="./images/header__logo.svg">
+    <img src = "<%=require('./images/header__logo.svg')%>" alt="логотип" class="header__logo" >
 </header>
 
 <main class="content">
     <section class="profile">
         <div class="profile__container">
-            <img alt="Картинка профиля" class="profile__avatar" src="./images/profile__image.jfif"/>
+            <img alt="Картинка профиля" class="profile__avatar" src="images/profile__image.jfif"/>
         </div>
         <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button" data-form-name="edit_profile_div">
-                <img alt="Кнопка изменения профиля" class="profile__edit-image" src="./images/profile__edit-button.svg" data-form-name="edit_profile_div">
+                <img alt="Кнопка изменения профиля" class="profile__edit-image" src="images/profile__edit-button.svg" data-form-name="edit_profile_div">
             </button>
             <p class="profile__subtitle">Исследователь океана</p>
         </div>
         <button class="profile__add-button" type="button" data-form-name="add_mesto_div">
-            <img alt="Кнопка добавления новых постов" class="profile__add-image" src="./images/profile__add-button.svg" data-form-name="add_mesto_div">
+            <img alt="Кнопка добавления новых постов" class="profile__add-image" src="images/profile__add-button.svg" data-form-name="add_mesto_div">
         </button>
     </section>
 
@@ -92,8 +92,6 @@
         <p class="popup__description"></p>
     </div>
 </div>
-
-<script src="./scripts/index.js" type="module"></script>
 
 </body>
 </html>
