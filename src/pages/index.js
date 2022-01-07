@@ -110,13 +110,6 @@ const openModalEditPopup = () => {
     openModalEditForm.open()
 }
 
-const submitPopupProfile = (evt) => {
-    evt.preventDefault();
-    profileNameContent.textContent = namePopup.value
-    profileJobContent.textContent = jobPopup.value
-    modalEditForm.close();
-}
-
 editBtn.addEventListener('click', openModalEditPopup)
 addBtn.addEventListener('click', openModalAddPopup)
 
