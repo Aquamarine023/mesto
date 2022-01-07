@@ -5,7 +5,7 @@ export default class PopupWithForm extends Popup {
         super(popupSelector)
         this._submitForm = submitForm
         this._formList = this._popup.querySelector('.popup__form')
-        this._inputList = Array.from(this._formList.querySelectorAll('.popup__content'))
+        this._inputList = Array.from(this._formList.querySelectorAll('.popup__input'))
     }
 
     //получение данных полей

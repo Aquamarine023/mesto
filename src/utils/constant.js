@@ -12,17 +12,19 @@ export const textPopupFullScreen = document.querySelector('.popup__description')
 export const templateSelector = '.card_template'
 
 //инпуты форм
-export const namePopup = document.edit_profile['profile_name']
-export const jobPopup = document.edit_profile['profile_job']
+export const namePopup = profileFormSelector.elements.profile_name
+export const jobPopup = profileFormSelector.elements.profile_job
 
 //профиль пользователя
 export const profileNameSelector = '.profile__title'
 export const profileJobSelector = '.profile__subtitle'
 
+export const profileNameContent = document.querySelector(profileNameSelector)
+export const profileJobContent = document.querySelector(profileJobSelector)
 //контейнер карточек
 export const cardsContainer = document.querySelector('.cards')
 
-//массивы
+//массив
 export const initialCards = [
     {
         name: 'Архыз',

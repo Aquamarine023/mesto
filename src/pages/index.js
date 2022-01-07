@@ -17,28 +17,31 @@ import {
     profileJobSelector,
     cardsContainer,
     initialCards,
-    validationFormConfig
+    validationFormConfig,
+    profileNameContent,
+    profileJobContent
 } from "../utils/constant.js";
 
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
+import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 
 
-//создание валидации для конкретной формы
+//создание валидации
 const formValidatorEditForm = new FormValidator(validationFormConfig, profileFormSelector)
 const formValidatorAddForm = new FormValidator(validationFormConfig, newMestoFormSelector)
 
-//создание экземпляра профиля
+
 const addInfoProfileForm = new UserInfo({
     userName: profileNameSelector,
     userInfo: profileJobSelector
 });
 
-//создание экземпляра попапа картинки на весь экран
+
 const popupImage = new PopupWithImage(
     modalFullScreenForm,
     imagePopupFullScreen,
@@ -71,7 +74,7 @@ const defaultCards = new Section({
 //отрисовка карточек
 defaultCards.renderItem()
 
-//создание экземпляра добавления места
+
 const openModalAddForm = new PopupWithForm({
     popupSelector: modalAddForm,
     submitForm: (item) => {
@@ -81,13 +84,13 @@ const openModalAddForm = new PopupWithForm({
 
 openModalAddForm.setEventListeners()
 
-//открытие формы добавление места
+
 const openModalAddPopup = () => {
     formValidatorAddForm.resetValidation()
     openModalAddForm.open()
 }
 
-//создание экземпляра редактирования профиля
+
 const openModalEditForm = new PopupWithForm({
     popupSelector: modalEditForm,
     submitForm: (item) => {
@@ -100,15 +103,22 @@ openModalEditForm.setEventListeners()
 //открытие формы редактирования профиля
 const openModalEditPopup = () => {
     const userData = addInfoProfileForm.getUserInfo()
+
     jobPopup.value = userData.userInfo
     namePopup.value = userData.userName
+
     openModalEditForm.open()
 }
 
-//ивенты
+const submitPopupProfile = (evt) => {
+    evt.preventDefault();
+    profileNameContent.textContent = namePopup.value
+    profileJobContent.textContent = jobPopup.value
+    modalEditForm.close();
+}
+
 editBtn.addEventListener('click', openModalEditPopup)
 addBtn.addEventListener('click', openModalAddPopup)
 
-//вызов валидации форм
 formValidatorAddForm.enableValidation()
 formValidatorEditForm.enableValidation()
